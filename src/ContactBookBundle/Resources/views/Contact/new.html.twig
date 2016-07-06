@@ -1,0 +1,28 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Add new contact{% endblock %}
+
+{% block body %}
+    {{ form(form) }}
+    {{ form_start(form) }}
+    <div>
+    {{ form_widget(form.name) }}
+    </div>
+    <div>
+    {{ form_widget(form.surname) }}
+    </div>
+    <div>
+    {{ form_widget(form.description) }}
+    </div>
+    <div>
+    {{ form_widget(form.submit) }}
+    </div>
+    {{ form_end(form) }}
+    {% if contact is defined %}
+        <a href="{{ path('addAddress', {"id": contact.id })}}">Add address</a>
+        <a href="{{ path('addEmail', {"id": contact.id })}}">Add email</a>
+        <a href="{{ path('addPhone', {"id": contact.id })}}">Add phone</a>
+    {% endif %}
+    
+{% endblock %}
+

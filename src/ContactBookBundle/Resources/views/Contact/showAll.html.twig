@@ -1,0 +1,25 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}All Contact's{% endblock %}
+
+{% block body %} 
+    <h1>Contact Book App</h1>
+    <a class="btn btn-primary" href="{{ path('new')}}" role="button">Add new contact <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+    <hr>
+    <table class="table-hover table-condensed">
+    {% for contact in contacts %}
+        <tr>
+            <td width="90%"><a href="{{ path('show', {"id": contact.id })}}"><strong>{{ contact.name }} {{ contact.surname }}</strong></a></td>
+            <td><a class="btn btn-success " href="{{ path('update', {"id": contact.id })}}" role="button">Update <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
+            <td><a class="btn btn-danger" href="{{ path('delete', {"id": contact.id })}}" role="button">Delete <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+            
+        </tr>
+        {% else %}
+        <p>No contact found<p>
+            
+    {% endfor %}
+    </table>
+    {% block footer %}{% endblock %}
+{% endblock %}
+
+
